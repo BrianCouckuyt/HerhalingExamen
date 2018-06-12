@@ -4,14 +4,16 @@ using HerhalingExamen.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HerhalingExamen.Web.Migrations
 {
     [DbContext(typeof(HerhalingContext))]
-    partial class HerhalingContextModelSnapshot : ModelSnapshot
+    [Migration("20180612131619_update1")]
+    partial class update1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -59,20 +61,12 @@ namespace HerhalingExamen.Web.Migrations
                         .IsUnique();
 
                     b.ToTable("ProductInfo");
-
-                    b.HasData(
-                        new { Id = new Guid("e2186f7c-4944-4dcb-a373-589d41fb9dc4"), Description = "de description van het eerste product", ProductId = new Guid("15600c2e-112d-47d9-aaf8-c05bf0990391") },
-                        new { Id = new Guid("c068d22a-6b23-426b-817a-e1b1c1465936"), Description = "de description van het tweede product", ProductId = new Guid("93f9c35a-3cf4-45c4-a3f8-66a44150010a") },
-                        new { Id = new Guid("e91ae6fa-fe00-4fcd-a744-9d51e95da77d"), Description = "de description van het derde product", ProductId = new Guid("426cfdad-2ebf-48e8-9e16-134ab54b465e") }
-                    );
                 });
 
             modelBuilder.Entity("HerhalingExamen.Web.Entities.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<bool>("IsAdmin");
 
                     b.Property<string>("Name")
                         .IsRequired();
@@ -83,11 +77,6 @@ namespace HerhalingExamen.Web.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new { Id = new Guid("2608f8ad-79e6-419d-a98c-fab17875a7ca"), IsAdmin = false, Name = "Brian", Password = "password" },
-                        new { Id = new Guid("f252f827-8284-4a4c-8343-9caf41e39916"), IsAdmin = true, Name = "Administrator", Password = "password" }
-                    );
                 });
 
             modelBuilder.Entity("HerhalingExamen.Web.Entities.Product", b =>

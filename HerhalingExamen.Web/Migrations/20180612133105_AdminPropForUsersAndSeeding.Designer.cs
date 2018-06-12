@@ -4,14 +4,16 @@ using HerhalingExamen.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HerhalingExamen.Web.Migrations
 {
     [DbContext(typeof(HerhalingContext))]
-    partial class HerhalingContextModelSnapshot : ModelSnapshot
+    [Migration("20180612133105_AdminPropForUsersAndSeeding")]
+    partial class AdminPropForUsersAndSeeding
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

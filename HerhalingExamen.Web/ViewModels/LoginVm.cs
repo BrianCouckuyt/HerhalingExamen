@@ -4,16 +4,13 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HerhalingExamen.Web.Entities
+namespace HerhalingExamen.Web.ViewModels
 {
-    public class User
+    public class LoginVm
     {
-        public Guid Id { get; set; }
-        [Required]
         public string Name { get; set; }
-        [Required]
+
+        [DataType(DataType.Password)]
         public string Password { get; set; }
-        public ICollection<Product> UserProducts { get; set; }
-        public Boolean IsAdmin { get; set; }
     }
 }

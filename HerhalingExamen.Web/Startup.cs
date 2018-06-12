@@ -35,6 +35,13 @@ namespace HerhalingExamen.Web
 
             services.AddDbContext<HerhalingContext>(o => o.UseSqlServer(Configuration.GetConnectionString("HerhalingExamenDb")));
 
+            services.AddMemoryCache();
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(5);
+            });
+
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -51,9 +58,19 @@ namespace HerhalingExamen.Web
                 app.UseHsts();
             }
 
+            app.UseSession();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                  name: "adminRoute",
+                  template: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
+            });
 
             app.UseMvc(routes =>
             {

@@ -12,5 +12,6 @@ namespace HerhalingExamen.Web.Entities
         [Required]
         public string Name { get; set; }
         public string Image { get; set; }
+        public ProductInfo ProductInfo { get; set; }
     }
 }
