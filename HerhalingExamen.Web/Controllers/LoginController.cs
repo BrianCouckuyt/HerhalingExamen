@@ -22,7 +22,6 @@ namespace HerhalingExamen.Web.Controllers
 
         public IActionResult Index()
         {
-            var user = new User();
             var loginVm = new LoginVm();
 
             return View(loginVm);

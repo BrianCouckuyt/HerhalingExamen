@@ -9,5 +9,6 @@ namespace HerhalingExamen.Web.ViewModels
     public class HomeIndexVm
     {
         public IEnumerable<Product> Products { get; set; }
+        public User User { get; set; }
     }
 }

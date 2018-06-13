@@ -9,14 +9,22 @@
 
     if (user != null)
     {
-        <h3>Welcome, @user!</h3>
+        <h3>Welcome, @user!, you have @Model.User.UserProducts.Count() items in your shopping list :<br /></h3>
+        @if (Model.User.UserProducts != null)
+        {
+            @foreach (var product in Model.User.UserProducts)
+            {
+                <p>@product.Name (<a asp-controller="Home" asp-action="RemoveFromCart" asp-route-ProductId="@product.Id">Remove from product list</a>)</p>
+            }
+        }
+
     }
     else
     {
         <h3>Welcome!</h3>
     }
 }
-
+<hr />
 <h2>Products :</h2>
 
 @foreach (var product in Model.Products)
@@ -25,6 +33,9 @@
     <br />
     <p>@product.Image</p>
     <p>@product.ProductInfo.Description</p>
-
+    @if (Model.User != null)
+    {
+        <a asp-controller="Home" asp-action="AddToCart" asp-route-ProductId="@product.Id"><p>Add To Product List</p></a>
+    }
     <hr />
 }
